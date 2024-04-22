@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/azuk"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:src="@drawable/colegio" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="18sp"
+        android:id="@+id/textView"
+        android:text="@string/here_text"
+        android:textColor="@color/gris"
+        android:visibility="invisible"
+        />
+
+    <EditText
+        android:id="@+id/editText"
+        android:hint="@string/add_text"
+        android:textColorHint="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:inputType="text"
+        android:drawableLeft="@drawable/boy"
+        android:drawablePadding="12dp"
+        />
+
+    <EditText
+        android:id="@+id/editApellido"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="24dp"
+        android:drawableStart="@drawable/boy"
+        android:drawablePadding="12dp"
+        android:hint="@string/Apellido"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="@color/black"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:hint="@string/phone"
+        android:textColorHint="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="12dp"
+        android:minHeight="48dp"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/correoElectronico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:drawableStart="@drawable/phone"
+        android:hint="@string/correo"
+        android:inputType="textEmailAddress"
+        android:maxLength="10"
+        android:minHeight="48dp"
+        android:textColorHint="@color/black"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="146dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/rosa_mexicano"
+        android:hint="@string/boton"
+        android:textColor="@color/gris"
+        android:enabled="true"
+        />
+</LinearLayout>
