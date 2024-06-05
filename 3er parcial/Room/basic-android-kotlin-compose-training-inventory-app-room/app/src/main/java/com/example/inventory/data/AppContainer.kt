@@ -16,16 +16,23 @@
 
 package com.example.inventory.data
 
-import kotlinx.coroutines.flow.Flow
+import android.content.Context
 
-class OfflineItemsRepository(private val itemDAO: ItemDAO) : ItemsRepository {
-    override fun getAllItemsStream(): Flow<List<Item>> = itemDAO.getAllItems()
+/**
+ * App container for Dependency injection.
+ */
+interface AppContainer {
+    val itemsRepository: ItemsRepository
+}
 
-    override fun getItemStream(id: Int): Flow<Item?> = itemDAO.getItem(id)
-
-    override suspend fun insertItem(item: Item) = itemDAO.insert(item)
-
-    override suspend fun deleteItem(item: Item) = itemDAO.delete(item)
-
-    override suspend fun updateItem(item: Item) = itemDAO.update(item)
+/**
+ * [AppContainer] implementation that provides instance of [OfflineItemsRepository]
+ */
+class AppDataContainer(private val context: Context) : AppContainer {
+    /**
+     * Implementation for [ItemsRepository]
+     */
+    override val itemsRepository: ItemsRepository by lazy {
+        OfflineItemsRepository(InventoryDatabase.getDatabase(context).itemDao())
+    }
 }

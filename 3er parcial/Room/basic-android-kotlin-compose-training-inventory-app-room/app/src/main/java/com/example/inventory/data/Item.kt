@@ -16,16 +16,17 @@
 
 package com.example.inventory.data
 
-import kotlinx.coroutines.flow.Flow
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-class OfflineItemsRepository(private val itemDAO: ItemDAO) : ItemsRepository {
-    override fun getAllItemsStream(): Flow<List<Item>> = itemDAO.getAllItems()
-
-    override fun getItemStream(id: Int): Flow<Item?> = itemDAO.getItem(id)
-
-    override suspend fun insertItem(item: Item) = itemDAO.insert(item)
-
-    override suspend fun deleteItem(item: Item) = itemDAO.delete(item)
-
-    override suspend fun updateItem(item: Item) = itemDAO.update(item)
-}
+/**
+ * Entity data class represents a single row in the database.
+ */
+@Entity(tableName = "items")
+data class Item(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val name: String,
+    val price: Double,
+    val quantity: Int
+)

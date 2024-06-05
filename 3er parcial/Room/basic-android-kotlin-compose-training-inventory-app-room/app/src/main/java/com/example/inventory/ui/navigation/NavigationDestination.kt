@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.example.inventory.data
+package com.example.inventory.ui.navigation
 
-import kotlinx.coroutines.flow.Flow
+/**
+ * Interface to describe the navigation destinations for the app
+ */
+interface NavigationDestination {
+    /**
+     * Unique name to define the path for a composable
+     */
+    val route: String
 
-class OfflineItemsRepository(private val itemDAO: ItemDAO) : ItemsRepository {
-    override fun getAllItemsStream(): Flow<List<Item>> = itemDAO.getAllItems()
-
-    override fun getItemStream(id: Int): Flow<Item?> = itemDAO.getItem(id)
-
-    override suspend fun insertItem(item: Item) = itemDAO.insert(item)
-
-    override suspend fun deleteItem(item: Item) = itemDAO.delete(item)
-
-    override suspend fun updateItem(item: Item) = itemDAO.update(item)
+    /**
+     * String resource id to that contains title to be displayed for the screen.
+     */
+    val titleRes: Int
 }

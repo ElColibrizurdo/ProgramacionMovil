@@ -50,8 +50,6 @@ import kotlinx.coroutines.launch
 import java.util.Currency
 import java.util.Locale
 
-
-
 object ItemEntryDestination : NavigationDestination {
     override val route = "item_entry"
     override val titleRes = R.string.item_entry_title
@@ -65,9 +63,7 @@ fun ItemEntryScreen(
     canNavigateBack: Boolean = true,
     viewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
-
     val coroutineScope = rememberCoroutineScope()
-
     Scaffold(
         topBar = {
             InventoryTopAppBar(
@@ -86,11 +82,11 @@ fun ItemEntryScreen(
                     navigateBack()
                 }
             },
-                modifier = Modifier
+            modifier = Modifier
                 .padding(
                     start = innerPadding.calculateStartPadding(LocalLayoutDirection.current),
-                    top = innerPadding.calculateTopPadding(),
                     end = innerPadding.calculateEndPadding(LocalLayoutDirection.current),
+                    top = innerPadding.calculateTopPadding()
                 )
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
@@ -106,8 +102,8 @@ fun ItemEntryBody(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
         ) {
         ItemInputForm(
             itemDetails = itemUiState.itemDetails,

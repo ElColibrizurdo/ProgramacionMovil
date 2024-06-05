@@ -1,4 +1,4 @@
-    /*
+/*
  * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,8 +55,6 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
             name.isNotBlank() && price.isNotBlank() && quantity.isNotBlank()
         }
     }
-
-
 }
 
 /**
@@ -107,5 +105,3 @@ fun Item.toItemDetails(): ItemDetails = ItemDetails(
     price = price.toString(),
     quantity = quantity.toString()
 )
-
-

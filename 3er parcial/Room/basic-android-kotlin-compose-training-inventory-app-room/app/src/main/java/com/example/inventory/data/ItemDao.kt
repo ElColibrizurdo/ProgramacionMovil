@@ -16,16 +16,28 @@
 
 package com.example.inventory.data
 
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
-class OfflineItemsRepository(private val itemDAO: ItemDAO) : ItemsRepository {
-    override fun getAllItemsStream(): Flow<List<Item>> = itemDAO.getAllItems()
+@Dao
+interface ItemDao {
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(item: Item)
 
-    override fun getItemStream(id: Int): Flow<Item?> = itemDAO.getItem(id)
+    @Update
+    suspend fun update(item: Item)
 
-    override suspend fun insertItem(item: Item) = itemDAO.insert(item)
+    @Delete
+    suspend fun delete(item: Item)
 
-    override suspend fun deleteItem(item: Item) = itemDAO.delete(item)
+    @Query("SELECT * from items WHERE id = :id")
+    fun getItem(id: Int): Flow<Item>
 
-    override suspend fun updateItem(item: Item) = itemDAO.update(item)
+    @Query("SELECT * from items ORDER BY name ASC")
+    fun getAllItems(): Flow<List<Item>>
 }
