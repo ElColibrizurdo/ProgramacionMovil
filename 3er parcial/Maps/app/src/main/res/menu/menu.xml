@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "Locate me", should appear as action button if possible -->
+    <item
+        android:id="@+id/ic_geo"
+        android:icon="@drawable/action_geolocate"
+        android:title="@string/action_geolocate"
+        app:showAsAction="always|withText" />
+
+</menu>
